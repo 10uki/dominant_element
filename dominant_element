@@ -1,0 +1,36 @@
+package Task1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class dominant_element {
+	public static List<Integer> find_element(int[] arr) {
+		List<Integer> dominant_element = new ArrayList<>();
+		int max = arr[arr.length - 1]; // set the maximum element as the last element of the array
+		dominant_element.add(max); // add maximum to the list of dominant elements
+
+		// Iterate the array backwards starting from the second-to-last element
+		for (int i = arr.length - 1; i >= 0; i--) {
+			if (arr[i] > max) {
+				max = arr[i]; // update maximum element
+				dominant_element.add(max); // add the new maximum element to the list
+			}
+		}
+		return dominant_element; // return the list of dominant elements
+	}
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter the size of the array: ");
+		int n = input.nextInt();
+		int[] arr = new int[n];
+		System.out.println("Enter the elements of the array:");
+		for (int i = 0; i < n; i++) { 
+			arr[i] = input.nextInt();
+		}
+		List<Integer> dominant_elements = find_element(arr);
+		System.out.println("\nThe dominant elements are: \n" + dominant_elements);
+		input.close();
+	}
+}
